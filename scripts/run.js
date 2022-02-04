@@ -10,14 +10,22 @@ const main = async () => {
     let waveCount;
     waveCount = await waveContract.getTotalWaves();
 
-    let waveTxn = await waveContract.wave();
-    await waveTxn.wait();
+    let waveUpTxn = await waveContract.upWave();
+    await waveUpTxn.wait();
 
-    waveCount = await waveContract.getTotalWaves();
     
-    waveTxn = await waveContract.connect(randomPerson).wave();
-    await waveTxn.wait();
+    waveUpTxn = await waveContract.connect(randomPerson).upWave();
+    await waveUpTxn.wait();
 
+    waveUpTxn = await waveContract.connect(randomPerson).upWave();
+    await waveUpTxn.wait();
+
+    waveUpTxn = await waveContract.connect(randomPerson).upWave();
+    await waveUpTxn.wait();
+
+    let waveDownTxn = await waveContract.connect(randomPerson).downWave();
+    await waveDownTxn.wait();
+    
     waveCount = await waveContract.getTotalWaves();
 }
 
